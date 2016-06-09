@@ -1,0 +1,123 @@
+// variables vor Rapture - mixin for media queries
+rupture.scale = 0 320px 960px 1220px
+rupture.scale-names = 'xs' 'm' 'l' 'xl'
+rupture.anti-overlap = 1px
+rupture.mobile-cutoff = 320px
+rupture.desktop-cutoff = 960px
+rupture.hd-cutoff = 1220px
+
+// Rupture HINT
+// +below(m) = portable <=960
+// +at(l) = desktop 961-1220
+// +above(xl) = hd >=1221
+
+// +ie(9)
+
+// sizes v - vertical, l - large, s - small
+$w_container_min = 320px
+$w_side_panel = 225px
+
+$h_header = 72px
+$h_header_port = 46px
+$h_footer = 25px
+
+// height of tabs in nav-tab and lines with corners
+$h_strip = 26px
+
+$offset = 25px
+$offset_port = 10px
+$offset_port_l = 15px
+
+$offset_container = 13px
+
+$gutter = 20px
+$gutter_v_nav = 28px
+
+// border-radius
+$bdrs_s = 2px
+
+
+// COLORS
+// bases — use in places without specific function
+$c_base = #000
+$c_alt = #fff
+$c_grey = #999
+$c_brand = #0095d9
+$c_alarm = #E13214
+
+// greys
+$c_tundora = #4a4a4a
+$c_silver = #cccccc
+$c_mercury = #e1e1e1
+$c_concrete = #f3f3f3
+$c_alabaster = #f8f8f8
+
+// brands
+$c_lochmara = #008ac4
+$c_curblue = #3c93dc
+
+// color function bgc=background-color, bdc=border-color,tc=text-color
+// #008BD1 add to brands? 1 in workers
+$tc_brand = $c_lochmara
+
+$bgc_light = $c_alabaster
+$bgc_brand = $c_curblue
+
+// $bdc_base = $c_grey
+$bdc_light = #ebebeb
+
+// temp, remove if there are not bugs with colors
+// $c_grey_light = #e1e1e1
+// $c_brand_text = #008ac4
+// $bg_grey_light = #fdfdfd
+// #f3f3f3
+// $bg_brand = #3c93dc
+
+
+// fonts
+$fz_xxxs = 8px
+$fz_xxs = 11px
+$fz_xs = 12px
+$fz_s = 13px
+$fz_m = 14px
+$fz_l = 16px
+$fz_xl = 18px
+$fz_xxl = 22px
+$fz_xxxl = 30px
+
+$fz_base = $fz_m
+$lh_base = 1.2
+
+
+$ff_roboto ="Roboto", Helvetica, sans-serif
+$ff_opensans ="Open Sans", Helvetica, sans-serif
+
+// $font_roboto = 100 14px/1.2 $ff_roboto
+// $font_opensans = 300 14px/1.2 $ff_opensans
+
+
+
+$fw_bold_r = 500
+$fw_bold_os = 600
+
+
+// z-index
+$z_base = 1
+$z_decor = ($z_base +1)
+$z_tabs = ($z_decor + 1)
+$z_overtabs = ($z_tabs + 1)
+$z_header = ($z_overtabs + 1)
+$z_fixed = ($z_header + 1)
+$z_fixed_decor = ($z_fixed + 1)
+$z_overlay = ($z_fixed_decor + 1)
+$z_modal = ($z_overlay + 1)
+
+
+// transitions
+$trs_short = all 0.15s ease-in
+$trs_base = all 0.3s ease-in
+$trs_long = all 0.5s ease-out
+
+//  shadow
+$bxsh_base = 0 5px 6px rgba($c_grey, 0.2)
+$bxsh_s = 0 3px 4px rgba($c_grey, 0.5)

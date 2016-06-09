@@ -1,0 +1,17 @@
+include ../_vendor/bemto/bemto
+include ../_helpers/mixins
+include ../_blocks
+
+doctype html
+html
+    block variables
+    include ../partials/head
+    body(class = bodyClass ? bodyClass : '')
+        include ../../img/sprite.min.svg
+        include ../partials/header
+
+        block content
+
+        include ../partials/footer
+        include ../partials/scripts
+        block scripts

@@ -1,0 +1,214 @@
+// supporting oldies, for iE9 call mixin with +ie(9)
+ie($version, $strict = false)
+  if ($is-ie == true)
+    if($strict == true)
+      if ($is-ie--version == $version)
+        {block}
+    else
+      if ($is-ie--version <= $version)
+        {block}
+
+
+text-hide()
+  border 0
+  font 0/0 a
+  text-shadow none
+  color transparent
+  background-color transparent
+
+
+clearfix()
+  &:after
+    content ""
+    display table
+    clear both
+
+
+// non-standart underline for links, used instead of link's border-bottom to save link's paddings. for 1-lines, so don't use without text-ellipsis() or another mixin for overflow-protection
+underline(vert, hor, style)
+  &::after
+    content ""
+    position absolute
+    bottom vert
+    left hor
+    right hor
+    border-bottom: 1px style
+
+
+// 1-line overflow-protection
+text-ellipsis()
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+
+
+word-wrap()
+  overflow-wrap: break-word
+  word-wrap: break-word
+  word-break: break-all
+  hyphens: manual;
+
+
+line()
+  content ""
+  position: absolute
+  left 0
+  right 0
+  height 1px
+  background-color $c_grey
+
+
+// CSS-arrows for sliders, hidden lists, etc. Put on pseudo-el arrow(), arrow-mode() and left/right position
+arrow(size)
+  content ""
+  position: absolute
+  top "calc(50% - (%s / 2))" % size
+  width: size
+  height: size
+  transform: rotate(45deg)
+  cursor: pointer
+  z-index: $z_base
+
+arrow-l()
+  border: 2px solid $bdc_light
+  border-top-color: transparent
+  border-right-color: transparent
+
+arrow-r()
+  border: 2px solid $bdc_light
+  border-bottom-color: transparent
+  border-left-color: transparent
+
+arrow-b()
+  border: 2px solid $bdc_light
+  border-top-color: transparent
+  border-left-color: transparent
+
+arrow-t()
+  border: 2px solid $bdc_light
+  border-bottom-color: transparent
+  border-right-color: transparent
+
+
+// diagonal-corners. Put on pseudo-el corner() and corner-mode(). For hovers put bdc (border-color) between mixin and mode
+corner(size, color)
+  content ""
+  position absolute
+  width 0
+  height 0
+  border size solid color
+  left (-(size))
+  right (-(size))
+
+corner-tr()
+  bottom 0
+  left auto
+  border-top-width 0
+  border-right-width 0
+  border-bottom-color transparent
+
+corner-tl()
+  bottom 0
+  right auto
+  border-top-width 0
+  border-left-width 0
+  border-bottom-color transparent
+
+corner-br()
+  top 0
+  left auto
+  border-bottom-width 0
+  border-right-width 0
+  border-top-color transparent
+
+corner-bl()
+  top 0
+  right auto
+  border-bottom-width 0
+  border-left-width 0
+  border-top-color transparent
+
+// line with left corner
+strip(size, color)
+  &::before
+    corner(size, color)
+    top (-(size))
+    left 0
+    right auto
+    border-bottom-width 0
+    border-left-width 0
+    border-top-color transparent
+  &::after
+    content ""
+    position absolute
+    // for container fix
+    width "calc(100% - %s)" % size
+    // width "calc(100% - (%s / 2))" % size
+    height size
+    top (-(size))
+    left size
+    background-color color
+
+
+// line with left corner for modals
+strip-modal(size, color)
+  &::before
+    corner(size, color)
+    top (-(size - 1px))
+    left -1px
+    right auto
+    border-bottom-width 0
+    border-left-width 0
+    border-top-color transparent
+  &::after
+    content ""
+    position absolute
+    // for container fix
+    width "calc(100% - %s + 1px)" % size
+    // width "calc(100% - (%s / 2))" % size
+    height size
+    top (-(size - 1px))
+    left - @top
+    background-color color
+
+
+no-pseudo()
+  &:before,
+  &:after
+    content none
+
+btn-clean()
+  padding: 0;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor pointer
+
+btn-close(height, width, color)
+  position relative
+  btn-clean()
+  text-hide()
+  &::before,
+  &::after
+    content ""
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+    width width
+    height height
+    background-color color
+  &::before
+    transform skew(-45deg)
+  &::after
+    transform skew(45deg)
+
+  &:hover::before,
+  &:hover::after
+    background-color lighten(color, 30%)
+
+
+
+
